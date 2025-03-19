@@ -117,7 +117,7 @@ bool isZero(ExprNODE* N){
 }
 
 void ENumberPrint(ExprNODE *EN){
-    if(isNUMBER(EN)==false) printf("숫자가 아닙니다!\n");
+    if(isNUMBER(EN)==false) printf("NOT NUMBER!\n");
     else { /*printf("%d / ",EN->isFloat); printf("%c",EN->oper);*/ LLPrint(EN->NUMBER); }
 }
 
