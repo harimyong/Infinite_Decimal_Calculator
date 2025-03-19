@@ -39,8 +39,7 @@ ExprNODE* TERM_PROCESSOR(){
     return res;
 }
 ExprNODE* FACTOR_PROCESSOR(){
-    ExprNODE* res=makeExprNODE(LLInit(),'+');
-    LLpushBack(res->NUMBER,'0');
+    ExprNODE* res=NULL;
     char res_oper='+';
     if(!isNUMBER(Input_NODE) && MatchSign(Input_NODE,'-')){
         res_oper='-';

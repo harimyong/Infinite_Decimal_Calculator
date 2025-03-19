@@ -28,7 +28,7 @@ void LLpushBack(LinkedList *L,char data){
 }
 
 bool LLpopFront(LinkedList *L){
-    if(LLisEmpty(L)) return false;
+    if(L==NULL || LLisEmpty(L)) return false;
     NODE* removeNODE=L->head->next;
     L->head->next->next->prev=L->head;
     L->head->next=L->head->next->next;
@@ -37,7 +37,7 @@ bool LLpopFront(LinkedList *L){
 }
 
 bool LLpopBack(LinkedList *L){
-    if(LLisEmpty(L)) return false;
+    if(L==NULL || LLisEmpty(L)) return false;
     NODE* removeNODE=L->tail->prev;
     L->tail->prev->prev->next=L->tail;
     L->tail->prev=L->tail->prev->prev;
@@ -46,7 +46,7 @@ bool LLpopBack(LinkedList *L){
 }
 
 bool LLPrint(LinkedList *L){
-    if(LLisEmpty(L)) return false;
+    if(L==NULL || LLisEmpty(L)) return false;
     NODE* now=L->head;
     while(now->next!=NULL){
         now=now->next;
@@ -56,7 +56,7 @@ bool LLPrint(LinkedList *L){
 }
 
 bool LLElementRemove(LinkedList *L){
-    if(LLisEmpty(L)) return false; 
+    if(L==NULL || LLisEmpty(L)) return false; 
     NODE* now=L->head->next;
     L->head->next=L->tail;
     L->tail->prev=L->head;
@@ -71,7 +71,7 @@ bool LLElementRemove(LinkedList *L){
 void LLHeadTailRemove(LinkedList *L){ free(L->head); free(L->tail); }
     
 bool LLAllRemove(LinkedList *L){ 
-    if(LLElementRemove(L)==false) return false;
+    if(L==NULL || LLElementRemove(L)==false) return false;
     LLHeadTailRemove(L); free(L);
     return true;
 }

@@ -8,17 +8,16 @@ Expr* NumPreprocessing(LinkedList *expr){
     NODE* now=expr->head->next;
     while(now->next!=NULL){
         if(isNUM_ASCII(now->data)){
-            LinkedList* NUMBER=LLInit();
+            ExprNODE* newElement=makeExprNODE(LLInit(),'+');
             bool flag=False;
             while(isNUM_ASCII(now->data) || now->data=='.'){
                 if(now->data=='.'){
                     if(!flag) flag=True;
                     else return NULL;
                 } 
-                LLpushBack(NUMBER,now->data);
+                LLpushBack(newElement->NUMBER,now->data);
                 now=now->next;
             }
-            ExprNODE* newElement=makeExprNODE(NUMBER,'+');
             if(flag) newElement->isFloat=true;
             EpushBack(EXPR,newElement);
         }else{
@@ -67,7 +66,7 @@ void EpushBack(Expr *E,ExprNODE *data){
 }
 
 bool EPrint(Expr *E){
-    if(EisEmpty(E)) return false;
+    if(E==NULL || EisEmpty(E)) return false;
     ExprNODE* now=E->head->next;
     while(now!=NULL && now->next!=NULL){
         if(now->NUMBER!=NULL) { ENumberPrint(now); }  
@@ -80,13 +79,13 @@ bool EPrint(Expr *E){
 bool EisEmpty(Expr *E){ return E->head->next->oper==0 && E->head->next->NUMBER==NULL; }
 
 bool EElementRemove(Expr *E){
-    if(EisEmpty(E)) return false;
+    if(E==NULL || EisEmpty(E)) return false;
     ExprNODE* now=E->head->next;
     E->head->next=E->tail;
     E->tail->prev=E->head;
     while(now->NUMBER!=NULL || now->oper!=0){
         ExprNODE* nxt=now->next;
-        free(now->NUMBER);
+        LLAllRemove(now->NUMBER);
         free(now);
         now=nxt;
     }
@@ -95,17 +94,15 @@ bool EElementRemove(Expr *E){
 void EHeadTailRemove(Expr *E){
     ExprNODE* H=E->head;
     ExprNODE* T=E->tail;
-    free(H->NUMBER);
-    free(T->NUMBER);
     free(H); free(T);
 }
 bool EAllRemove(Expr *E){
-    if(EElementRemove(E)==false) return false;
+    if(E==NULL || EElementRemove(E)==false) return false;
     EHeadTailRemove(E); free(E);
     return true;
 }
 bool MatchSign(ExprNODE* EN,char oper){
-    if(EN->NUMBER!=NULL) return false;
+    if(EN==NULL ||EN->NUMBER!=NULL) return false;
     return EN->oper==oper;
 }
 bool isNUMBER(ExprNODE* EN){ return EN->NUMBER!=NULL && (EN->oper=='+' || EN->oper=='-'); }
