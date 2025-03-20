@@ -1,5 +1,4 @@
 #include "expression.h"
-#include <sys/sysinfo.h>
 #define Operation_Count 10000
 #define Cutting_digit Operation_Count/10
 

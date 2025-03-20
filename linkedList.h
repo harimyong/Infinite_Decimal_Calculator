@@ -5,7 +5,6 @@ typedef struct
     NODE* tail;
 }LinkedList;
 
-
 LinkedList* LLInit(); //LinkedList init
 void LLpushFront(LinkedList *L,char data); //front에 push
 void LLpushBack(LinkedList *L,char data); //back에 push
