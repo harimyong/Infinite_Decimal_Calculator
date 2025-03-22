@@ -1,5 +1,5 @@
 #include "errhandling.h"
-#define Operation_Count 10000
+#define Operation_Count 100
 #define Cutting_digit Operation_Count/10
 
 //Calcultaion Functions - Polynomial Processing

@@ -6,7 +6,12 @@ int main(){
     LinkedList* Bef_input=ExprInput(); //Input Expression
     if(NO_InputERROR(Bef_input)) { LLHeadTailRemove(Bef_input); free(Bef_input); return 0; } //If NO inputError, memory free -> exit program
     Expr* Aft_input=NumPreprocessing(Bef_input);//number of inputed Expression preprocessing
-    if(NOTVALID_InputERROR(Aft_input)) return 0; //If NOTVALID inputError, exit program
+    int ErrorCode=1;
+    if((ErrorCode=catchError(Aft_input))!=1){ //If NOTVALID inputError, exit program
+        printf("error! code : %d\n",ErrorCode);
+        if(Aft_input!=NULL) EAllRemove(Aft_input);
+        return 0;
+    }
 
     //Print inputed expression
     printf("Inputed Expression\n"); EPrint(Aft_input); printf("\n\n");
