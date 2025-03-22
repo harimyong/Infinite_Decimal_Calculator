@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
 typedef int bool;
