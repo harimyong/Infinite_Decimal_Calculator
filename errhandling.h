@@ -33,5 +33,4 @@ bool numberCheck(ExprNODE* N); //number의 형식인가?
 bool operCheck(ExprNODE* O); //제공하는 Operator의 형식인가?
 bool isAO(ExprNODE *O);
 bool isP(ExprNODE* O);
-bool NO_InputERROR(LinkedList *L);
-//bool NOTVALID_InputERROR(Expr *E); // <- 추후에 삭제 예정, catchError
+bool NO_InputERROR(LinkedList *L);//bool NOTVALID_InputERROR(Expr *E); // <- 추후에 삭제 예정, catchError

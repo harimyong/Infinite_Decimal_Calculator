@@ -41,9 +41,14 @@ ExprNODE* TERM_PROCESSOR(){
 ExprNODE* FACTOR_PROCESSOR(){
     ExprNODE* res=NULL;
     char res_oper='+';
-    if(!isNUMBER(Input_NODE) && MatchSign(Input_NODE,'-')){
-        res_oper='-';
-        Input_NODE=Input_NODE->next;
+    if(!isNUMBER(Input_NODE)){
+        if(MatchSign(Input_NODE,'-')){
+            res_oper='-';
+            Input_NODE=Input_NODE->next;
+        }
+        else if(MatchSign(Input_NODE,'+')){
+            Input_NODE=Input_NODE->next;
+        }
     }
     if(!isNUMBER(Input_NODE) && MatchSign(Input_NODE,'(')){
         Input_NODE=Input_NODE->next;
