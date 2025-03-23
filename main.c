@@ -13,21 +13,15 @@ int main(){
         return 0;
     }
 
-    //Print inputed expression
-    printf("Inputed Expression\n"); EPrint(Aft_input); printf("\n\n");
+    printf("Inputed Expression\n"); EPrint(Aft_input); printf("\n\n"); //Print inputed expression
 
     //Caculate
     Input_NODE=Aft_input->head->next;
     ExprNODE* res=EXPR_PROCESSOR();
-    if(res==NULL){
-        EAllRemove(Aft_input);
-        return 0;
-    }else{
-        PopZero(res);
-        printf("Caculated Result\n%c",res->oper); ENumberPrint(res); printf("\n");
-    }
-
     //Print Caculated Result
+    if(res==NULL){  EAllRemove(Aft_input); return 0; }
+    else{ PopZero(res); printf("Caculated Result\n%c",res->oper); ENumberPrint(res); printf("\n"); }
+
 
     //Memory free(Result Memory free, inputed expression)
     DeleteExprNODE(res);

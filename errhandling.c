@@ -57,13 +57,9 @@ int elementCheck(Expr *expr){
     return 1;
 }
 
-bool numberCheck(ExprNODE* N){
-    return !(N->isFloat==true && N->NUMBER->tail->prev->data=='.');
-}
+bool numberCheck(ExprNODE* N){ return !(N->isFloat==true && N->NUMBER->tail->prev->data=='.'); }
 
-bool isP(ExprNODE *O){
-    return O->oper=='(' || O->oper==')';
-}
+bool isP(ExprNODE *O){ return O->oper=='(' || O->oper==')'; }
 
 bool isAO(ExprNODE *O){
     if(!isOper(O)) return false;
