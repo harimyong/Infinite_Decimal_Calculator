@@ -21,9 +21,11 @@ Expr* NumPreprocessing(LinkedList *expr){
             if(flag) newElement->isFloat=true;
             EpushBack(EXPR,newElement);
         }else{
-            ExprNODE* newElement=makeExprNODE(NULL,now->data);
+            if(now->data!=' '){
+                ExprNODE* newElement=makeExprNODE(NULL,now->data);
+                EpushBack(EXPR,newElement);
+            }
             now=now->next;
-            EpushBack(EXPR,newElement);
         }
     }
     LLAllRemove(expr);

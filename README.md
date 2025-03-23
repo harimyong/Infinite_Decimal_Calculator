@@ -16,8 +16,8 @@ gcc -g3 -fsanitize=address main.c node.c linkedList.c expression.c number.c calc
     -숫자에 소수점이 두개이상인가? => Element Error -> fin<br/>
     -입력된 데이터 중 계산 중에 있어서 문제가 되는 데이터가 있는가? => Element Error -> fin<br/>
     -식에서 연산기호가 연속으로 나왔는가? => Sign Error -> fin<br/>
-    -공백이 포함되어있는가? => WAIT<br/>
-        -포함되어있다면 공백을 삭제한다. <- 할까말까 생각중...<br/>
+    -공백이 포함되어있는가? => fin<br/>
+        -포함되어있다면 공백을 삭제한다. -> 포함되어있다면 무시하여 식에 포함시키지 않는다.
 
 <br/>
 2. 불필요한 코드 삭제<br/>
